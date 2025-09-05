@@ -1,60 +1,45 @@
 
 
 
-const input1 = document.getElementById('input1')
-const input2 = document.getElementById('input2')
-const plus = document.getElementById('plus')
-const minus = document.getElementById('minus')
-const submit = document.getElementById('submit')
-const result = document.getElementById('result')
-
-let asad = plus
-
+const input1 = document.querySelector('#input1')
+const input2 = document.querySelector('#input2')
+const plus = document.querySelector('#plus')
+const minus = document.querySelector('#minus')
+const submit = document.querySelector('#submit')
+const result = document.querySelector('#result')
+let operator = '+'
 
 
+plus.addEventListener('click', () => {
+    operator = '+'
+})
 
-plus.onclick = () => {
-    asad = plus
+minus.addEventListener('click', () => {
+    operator = '-'
+})
+
+
+submit.addEventListener('click', function() {
+       let num1 = parseFloat(input1.value)
+       let num2 = parseFloat(input2.value)
+
+     if (isNaN(num1) || isNaN(num2)) {
+          result.textContent = 'Введите число!'
+          result.style.color = 'red'
+          return
+     }
+
+     result.textContent =  operator === '+' ? num1 + num2 
+     : num1 - num2
+      color()   
+})
+
+
+function color() {
+    result.textContent > 0 ? result.style.color = 'red' 
+    : result.style.color = 'blue'
 }
 
-minus.onclick = () => {
-    asad = minus
-}
-
-
-submit.onclick = () => {
-    let inputValue1 = Number(input1.value.trim())
-    let inputValue2 = Number(input2.value.trim())
-    if (inputValue1 == '' || inputValue2 == '') {
-        result.textContent = 'Введите Число!'
-        return
-    }
-
-    if (isNaN(inputValue1) || isNaN(inputValue2)) {
-        result.textContent = 'Необходимо Ввести Число'
-        return
-    }
-
-    let a
-    if (asad === plus) {
-        a = inputValue1 + inputValue2
-        result.textContent = a
-    } else {
-        a = inputValue1 - inputValue2
-        result.textContent = a
-    }
-    color(a)
-
-    input1.value = ''
-    input2.value = ''
-
-
-}
-
-
-function color(value) {
-    result.style.color = value > 10 ? 'red' : 'blue'
-}
 
 
 
