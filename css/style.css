@@ -1,0 +1,12 @@
+
+@media(max-width: 768px) {
+    .w-50 {
+        width: 90% !important;
+    }
+
+    .mx-2 {
+        margin-right: .3rem !important;
+        margin-left: .3rem !important;
+    }
+}
+
